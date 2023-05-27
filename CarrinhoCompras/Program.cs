@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
+using WebHost.Customization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,8 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = builder.Configuration.GetValue<string>("CacheSettings:ConnectionString");
 });
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddServiceSdk(builder.Configuration);
 
 var app = builder.Build();
 
@@ -27,7 +30,7 @@ app.MapPost("/carrinhos", async (Carrinho carrinho, IDistributedCache redis) =>
 {
     await redis.SetStringAsync(carrinho.UsuarioId, JsonSerializer.Serialize(carrinho));
     return true;
-});
+}).RequireAuthorization("Cliente");
 
 app.MapGet("/carrinhos/{usuarioId}", async (string usuarioId, IDistributedCache redis) =>
 {
@@ -41,7 +44,7 @@ app.MapGet("/carrinhos/{usuarioId}", async (string usuarioId, IDistributedCache 
     });
 
     return carrinho;
-});
+}).RequireAuthorization("Cliente");
 
 app.Run();
 
