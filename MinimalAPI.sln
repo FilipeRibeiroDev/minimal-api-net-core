@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHost.Customization", "WebHost.Customization\WebHost.Customization.csproj", "{527E283A-8D82-4666-8174-0230B3A90BE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Produtos", "Produtos\Produtos.csproj", "{2DEA22C6-F8E7-427D-AE6D-E426A153CB8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estoque", "Produtos\Estoque.csproj", "{2DEA22C6-F8E7-427D-AE6D-E426A153CB8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

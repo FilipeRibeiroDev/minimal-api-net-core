@@ -18,8 +18,8 @@ if (app.Environment.IsDevelopment())
 
 app.MapPost("connect/token", (Autenticacao autenticacao, IConfiguration configuration) =>
 {
-    if(autenticacao.Usuario == "cliente" && autenticacao.Senha == "123")
-        return Token.Create(configuration, "Cliente");
+    if(autenticacao.Usuario == "Admin" && autenticacao.Senha == "123")
+        return Token.Create(configuration, "Admin");
     
     return "Usuário não encontrado";
 });
